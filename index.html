@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple CRUD App</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Simple CRUD App</h1>
+        </div>
+        <div class="filter">
+           <div class="group">
+               <label>Date Filter</label>
+               <div class="group-box">
+                    <input type="date" class="filterInput">
+                   <button class="btn showAll" onclick="getItems();">Show All</button>
+               </div>
+           </div>
+            <button class="addBtn btn" onclick="showAddNew()">Add New</button>
+        </div>
+        <div class="table">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Item</th>
+                    <th>Extra</th>
+                    <th>Price</th>
+                    <th>Date Time</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="popUpBackground" style="display: none">
+        <div class="popUp scale-up-center">
+            <h2>Add Item</h2>
+            <form method="post">
+                <label>Item</label>
+                <input type="text" name="item" placeholder="Example: Coffee" required>
+                <label>Extra</label>
+                <input type="text" name="extra" placeholder="Example: Shot" required>
+                <label>Price</label>
+                <input type="number" name="price" step="0.01" placeholder="Example: 5.33" required>
+                <label>Date Time</label>
+                <input type="datetime-local" name="date_time" required>
+                <input id="function" type="hidden" name="add" value="" >
+                <div class="addControl control">
+                    <button class="addBtn btn">Add</button>
+                    <button type="button" class="btn cancelBtn" onclick="togglePopUp('fade')">Cancel</button>
+                </div>
+                <div class="editControl control" style="display: none">
+                    <button class="addBtn btn">Save</button>
+                    <button type="button" class="btn cancelBtn" onclick="togglePopUp('fade')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="messageBoxBackground " style="display: none;">
+        <div class="messageBox scale-up-center">
+            <p>Are you sure?</p>
+            <div class="messageControl control">
+                <button data-id="" class="btn confirmBtn">Yes</button>
+                <button type="button" class="btn cancelBtn" onclick="toggleMessageBox('fade')">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="messageSuccuess">
+        <p>Add Successfully</p>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

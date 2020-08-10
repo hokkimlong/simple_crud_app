@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+$addBtn : #1ac85b;
+$cancelBtn : #b5b5b5;
+$deleteBtn : #e65252;
+$editBtn : #4186cb;
+$clickDeleteBtn : #b04343;
+$clickAddBtn : #159945;
+$clickCancelBtn : #a8a8a8;
+$clickEditBtn : #33689d;
+$tableBorder: #a3a3a3;
+$fontColor: #636363;
+$hoverTable: #84c696;
+$showALl : #ffb427;
+$clickShowALl : #df9f1d;
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: Roboto;
+}
+@mixin flex($justify:center,$align:center){
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+@mixin btnColor($background,$click){
+  background-color: $background;
+  &:active{
+    background-color: $click;
+  }
+}
+.success{
+  background-color: $addBtn!important;
+}
+.fail{
+  background-color: $deleteBtn!important;
+}
+.animateBtn{
+  transform: scale(1.08);
+  transition: linear 0.2s;
+  font-weight: bold;
+}
+.btn{
+  cursor: pointer;
+  transition: linear 0.2s;
+  padding:8px 30px;
+  border-radius: 40px;
+  border:0;
+  color:white;
+  &:focus{
+    outline: none;
+  }
+  &:active{
+    color: #d6d6d6;
+  }
+  &:hover{
+    @extend .animateBtn;
+  }
+}
+.showAll{
+  @include btnColor($showALl,$clickShowALl);
+}
+.addBtn{
+ @include btnColor($addBtn,$clickAddBtn);
+}
+.confirmBtn{
+  @extend .deleteBtn;
+}
+.deleteBtn{
+  @include btnColor($deleteBtn,$clickDeleteBtn);
+}
+.cancelBtn{
+  @include btnColor($cancelBtn,$clickCancelBtn);
+}
+.editBtn{
+  @include btnColor($editBtn,$clickEditBtn);
+}
+body{
+}
+.container{
+  max-width: 80vw;
+  margin:0 auto;
+}
+.header{
+  margin:0 auto;
+  margin-top:20px;
+  @include flex(space-between,center);
+  h1{
+    text-align: left;
+  }
+}
+.filter{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.filter .group{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+  input{
+    width: 200px;
+    padding:5px 5px;
+  }
+}
+.table{
+  margin-top:20px;
+  @include flex();
+  table{
+    color: $fontColor;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    td,th{
+      padding:15px 30px;
+    }
+    td:last-child{
+      text-align: center;
+    }
+    tbody{
+      tr:hover{
+        cursor: pointer;
+        background-color: $hoverTable;
+        color: white;
+      }
+    }
+    tr{
+      border-top:1px solid $tableBorder;
+      th{
+        border-top: 2px solid  $clickAddBtn;
+        &:last-child{
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+.control{
+  @include flex(space-around);
+  margin-top: 15px;
+}
+.popUpBackground{
+  background-color: rgba(0,0,0,0.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left: 0;
+  .popUp{
+    transition: linear 0.5s;
+    border:1px solid rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding:40px 30px;
+    width: 400px;
+    margin:70px auto;
+    background-color: white;
+    h2{
+      margin-bottom: 40px;
+    }
+    form{
+      label{
+        display: block;
+        font-size: 18px;
+      }
+      input{
+        font-size: 16px;
+        width: 100%;
+        padding:5px 10px;
+        margin: 10px 0 15px 0;
+        border:0;
+        border-bottom: 1px solid $tableBorder;
+        &:focus{
+          outline: none;
+        }
+      }
+    }
+  }
+}
+.messageBoxBackground{
+  background-color: rgba(0,0,0,0.5);
+  border:1px solid rgba(0,0,0,0.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left: 0;
+
+  .messageBox{
+    border-radius: 10px;
+    padding:40px 30px;
+    width: 400px;
+    margin:100px auto;
+    background-color: white;
+    p{
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .messageControl{
+    }
+  }
+}
+.messageSuccuess{
+  width: 20%;
+  height: 40px;
+  position: absolute;
+  top:1px;
+  left:40%;
+  border-radius: 20px;
+  display: none;
+  p{
+    margin:10px;
+    text-align: center;
+  }
+  color: white;
+}
+.hidden{
+  display: none;
+}
+/*animate*/
+.scale-up-center{
+  animation:scale-up-center .4s cubic-bezier(.39,.575,.565,1.000) both
+}
+@keyframes scale-up-center{
+  0%{transform:scale(.5)
+  }
+  100%{transform:scale(1)}
+}
