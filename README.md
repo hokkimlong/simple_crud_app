@@ -7,5 +7,5 @@ Feature : Create , Update , Delete , Filter
 
 #configure db in php/db.php
 
-Demo:  http://lvunik.epizy.com/
+Demo:  http://lvunik.epizy.com/simple_crud_app
 
